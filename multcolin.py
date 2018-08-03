@@ -280,7 +280,7 @@ if __name__ == "__main__":
                              corr_tol = .95, 
                              condition_ind_tol = 5,
                              verbose = 1, 
-                             export_csv = 0)
+                             export_csv = 1)
     
     # WARNING: I've used condition_ind_tol = 5 just for this demonstration
     # This is TOO LOW! In practice, you should use 30 
