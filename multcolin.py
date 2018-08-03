@@ -257,21 +257,22 @@ def multcolin(indf, y_vals, min_vars_to_keep, corr_tol,
 
 if __name__ == "__main__":
     
-    # For the test, we will use the boson housing data
+    # For the test, we will use the boston housing data
     from sklearn.datasets import load_boston
+    
     boston = load_boston()
     print(boston.data.shape)
     # 506, 13
     
-    # the X values must be a dataframe with column names
-    # y must be a series
+    # The X values must be a dataframe with column names
+    # And y must be a series
     # TODO: Accept other formats (i.e., numpy arrays)
     X, y = pd.DataFrame(boston['data']), pd.Series(boston['target'])
     X.columns = ['CRIM', 'ZN', 'INDUS', 'NOX', 'RM', 'AGE', 'DIS',
                  'RAD', 'TAX', 'PTRATIO', 'B1000', 'LSTAT', 'MEDV']
     
     # This data doesn't suffer from multi-collinearity
-    # So let's introduce it
+    # So let's introduce it!
     X['EXTRA'] = .01*X['RAD'] + .02*X['ZN'] - .003*X['CRIM']    \
         + np.random.uniform()
     
