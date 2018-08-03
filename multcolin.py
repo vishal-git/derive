@@ -46,10 +46,8 @@ def plot_feature_reduction_results(indf):
     #plt.legend(fontsize = 14)
     plt.show()
     
-def multcolin(indf, y_vals, min_vars_to_keep, corr_tol, 
-              condition_ind_tol,
-              verbose,
-              export_csv):
+def multcolin(indf, y_vals, min_vars_to_keep, corr_tol, condition_ind_tol,
+              verbose, export_csv):
     """
     Performs feature reduction on *numeric* features using:
         1. Pairwise correlation analysis, followed by
@@ -92,7 +90,7 @@ def multcolin(indf, y_vals, min_vars_to_keep, corr_tol,
     if type(y[0]) == 'object':
         raise ValueError('The target/output vector is non-numeric.') 
         
-    ## Everything looks good -- let's proceed!
+    ## Everything looks good -- let's proceed! (aka the "happy path")
     
     # Print the number of discarded non-numeric features (if any) 
     if in_col_ct != num_col_ct and verbose == True:
@@ -257,7 +255,7 @@ def multcolin(indf, y_vals, min_vars_to_keep, corr_tol,
 
 if __name__ == "__main__":
     
-    # For the test, we will use the boston housing data
+    # For a demo, we will use the boston housing data
     from sklearn.datasets import load_boston
     
     boston = load_boston()
@@ -276,13 +274,10 @@ if __name__ == "__main__":
     X['EXTRA'] = .01*X['RAD'] + .02*X['ZN'] - .003*X['CRIM']    \
         + np.random.uniform()
     
-    vars_to_keep = multcolin(X, y, 
-                             min_vars_to_keep = 5, 
-                             corr_tol = .95, 
-                             condition_ind_tol = 5,
-                             verbose = 1, 
+    vars_to_keep = multcolin(X, y, min_vars_to_keep = 5, corr_tol = .95, 
+                             condition_ind_tol = 5, verbose = 1, 
                              export_csv = 1)
     
-    # WARNING: I've used condition_ind_tol = 5 just for this demonstration
+    # WARNING: I've used condition_ind_tol = 5 just for this demo
     # This is TOO LOW! In practice, you should use 30 
 
