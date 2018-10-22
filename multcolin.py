@@ -87,7 +87,7 @@ def multcolin(indf, y_vals, min_vars_to_keep, corr_tol, condition_ind_tol,
     
     
     # If y_vals are not numeric, raise warning and return
-    if type(y[0]) == 'object':
+    if y_vals.dtype == 'object':
         raise ValueError('The target/output vector is non-numeric.') 
         
     ## Everything looks good -- let's proceed! (aka the "happy path")
