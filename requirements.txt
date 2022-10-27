@@ -1,0 +1,3 @@
+pandas==1.5.1
+notebook==6.5.1
+seaborn==0.12.1
